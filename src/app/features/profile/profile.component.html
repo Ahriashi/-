@@ -1,0 +1,21 @@
+<div class="profile-container">
+  <h2>Редактирование профиля</h2>
+
+  <div class="avatar-section">
+    <img [src]="avatarPreview || 'assets/default-avatar.png'" alt="Avatar" class="avatar" />
+    <input type="file" (change)="onFileSelected($event)" />
+  </div>
+
+  <div class="form-section">
+    <label>Имя</label>
+    <input [(ngModel)]="user.name" placeholder="Введите имя" />
+
+    <label>Email</label>
+    <input [(ngModel)]="user.email" placeholder="Введите email" type="email" />
+
+    <label>Телефон</label>
+    <input [(ngModel)]="user.phone" placeholder="Введите телефон" type="tel" />
+
+    <button (click)="saveProfile()">Сохранить</button>
+  </div>
+</div>

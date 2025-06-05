@@ -1,0 +1,47 @@
+<div class="speedometer-container">
+  <svg [attr.viewBox]="'0 0 200 140'" width="200" height="140">
+    <!-- Фиолетовая дуга шкалы -->
+    <path
+      d="M 20 100 A 80 80 0 0 1 180 100"
+      stroke="#9c27b0"
+      stroke-width="12"
+      fill="none"
+    />
+
+    <!-- Деления -->
+    <ng-container *ngFor="let tick of ticks">
+      <line
+        [attr.x1]="tick.x1"
+        [attr.y1]="tick.y1"
+        [attr.x2]="tick.x2"
+        [attr.y2]="tick.y2"
+        stroke="#6a1b9a"
+        stroke-width="2"
+      />
+    </ng-container>
+
+    <!-- Стрелка -->
+    <line
+      x1="100"
+      y1="100"
+      [attr.x2]="needleX"
+      [attr.y2]="needleY"
+      stroke="black"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+
+    <!-- Центр круга -->
+    <circle cx="100" cy="100" r="4" fill="black" />
+
+    <!-- Проценты под стрелкой -->
+    <text x="100" y="125" text-anchor="middle" font-size="16" fill="#333" font-weight="bold">
+      {{ percent }}%
+    </text>
+
+    <!-- Подпись под процентами -->
+    <text x="100" y="140" text-anchor="middle" font-size="12" fill="#666">
+      {{ label }}
+    </text>
+  </svg>
+</div>

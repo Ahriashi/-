@@ -1,0 +1,12 @@
+<div class="p-4">
+  <h1 class="text-2xl font-bold mb-4">Выберите билет</h1>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+    <button
+      *ngFor="let num of ticketNumbers"
+      (click)="goToTicket(num)"
+      class="bg-blue-600 hover:bg-blue-700 text-white py-3 rounded shadow-md">
+      Билет {{ num }}
+    </button>
+  </div>
+</div>

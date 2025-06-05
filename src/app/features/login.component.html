@@ -1,0 +1,32 @@
+<div class="login-container">
+  <h2>Вход</h2>
+
+  <form (ngSubmit)="login()" class="login-form">
+    <label>
+      Имя:
+      <input type="text" [(ngModel)]="name" name="name" required />
+    </label>
+
+    <label>
+      Email:
+      <input type="email" [(ngModel)]="email" name="email" required />
+    </label>
+
+    <label>
+      Роль:
+      <select [(ngModel)]="role" name="role">
+        <option value="student">Студент</option>
+        <option value="teacher">Преподаватель</option>
+      </select>
+    </label>
+
+    <div *ngIf="role === 'teacher'">
+      <label>
+        Ключ преподавателя:
+        <input type="password" [(ngModel)]="teacherKey" name="teacherKey" />
+      </label>
+    </div>
+
+    <button type="submit">Войти</button>
+  </form>
+</div>

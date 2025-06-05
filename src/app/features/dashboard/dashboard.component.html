@@ -1,0 +1,115 @@
+<div class="dashboard-container">
+<button mat-button (click)="logout()">Выйти</button>
+
+<div class="dashboard-header text-center mb-6">
+  <div class="flex justify-center">
+    <div class="avatar-top">
+  <img 
+    [src]="userAvatarUrl || 'assets/default-avatar.png'" 
+    alt="Аватар пользователя" 
+    class="avatar"
+  />
+      
+    </div>
+  </div>
+  <div class="mt-2">
+    <p class="text-gray-600 text-sm">Группа: {{ userGroup || '—' }} | ID: {{ userId || '—' }}</p>
+    <h2 class="text-xl font-semibold">Приветствуем, {{ userName || 'Гость' }}!</h2>
+  </div>
+</div>
+
+
+  <!-- остальные элементы, например, прогресс и меню -->
+  <div class="progress-section">
+    <!-- твои прогресс-бары и кнопки -->
+     
+  </div>
+
+<div class="progress-circles flex flex-wrap justify-center gap-12 mt-6">
+  <div class="w-48 h-48 flex justify-center items-center">
+    <app-speedometer [percent]="drivingProgress" label="Вождение"></app-speedometer>
+  </div>
+  <div class="w-48 h-48 flex justify-center items-center">
+    <app-speedometer [percent]="theoryProgress" label="Теория"></app-speedometer>
+  </div>
+</div>
+
+
+
+  <div class="mb-6">
+    <button
+      (click)="goToProfile()"
+      class="bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700"
+    >
+      Редактировать профиль
+    </button>
+  </div>
+
+  <div class="mb-6">
+    <h2 class="text-lg font-semibold mb-2">Уведомления</h2>
+    <p>Пока нет новых уведомлений</p>
+  </div>
+
+  <div class="mb-6">
+    <h2 class="text-lg font-semibold mb-2">Сообщения</h2>
+    <p>Пока нет новых сообщений</p>
+  </div>
+
+<div class="rounded-xl shadow-md p-4 bg-white mb-4">
+  <div class="flex justify-between items-center mb-2">
+    <h2 class="text-lg font-semibold">Ближайшие события</h2>
+    <button
+      (click)="goToBooking()"
+      class="bg-blue-600 text-white text-sm px-3 py-1 rounded hover:bg-blue-700 transition"
+    >
+      + Добавить бронь
+    </button>
+  </div>
+
+  <div *ngIf="bookings.length === 0" class="text-gray-500">
+    Нет запланированных занятий
+  </div>
+
+  <div
+    *ngFor="let booking of bookings"
+    class="mb-2 p-2 border rounded-md flex justify-between items-center"
+  >
+    <div>
+      <div class="font-medium">{{ booking.title }}</div>
+      <div class="text-sm text-gray-500">
+        {{ booking.date | date: 'fullDate' }} в
+        {{ booking.date | date: 'shortTime' }}
+      </div>
+    </div>
+    <button
+      (click)="cancelBooking(booking.id)"
+      class="text-red-600 text-sm hover:underline"
+    >
+      Отменить
+    </button>
+  </div>
+
+  <div class="flex justify-between mt-8">
+    <button
+      (click)="goToSchedule()"
+      class="bg-green-600 text-white py-2 px-6 rounded hover:bg-green-700"
+    >
+      Расписание
+    </button>
+    <button
+      (click)="goToTickets()"
+      class="bg-yellow-600 text-white py-2 px-6 rounded hover:bg-yellow-700"
+    >
+      Билеты
+    </button>
+  </div>
+<!-- Кнопка управления расписанием, только для преподавателя -->
+<div *ngIf="isTeacher" class="mb-6">
+  <button
+    (click)="goToScheduleAdmin()"
+    class="bg-purple-600 text-white py-2 px-4 rounded hover:bg-purple-700"
+  >
+    Управление расписанием
+  </button>
+</div>
+</div>

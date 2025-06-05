@@ -1,0 +1,35 @@
+<div class="p-4 max-w-xl mx-auto">
+  <h2 class="text-2xl font-semibold mb-6">Бронирование занятия</h2>
+
+  <mat-form-field appearance="fill">
+  <mat-label>Выберите дату</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [matDatepickerFilter]="dateFilter"
+    [(ngModel)]="date"
+    (dateChange)="onDateChange()"
+  />
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+
+
+<mat-form-field appearance="outline" class="w-full mb-4">
+  <mat-label>Время</mat-label>
+  <mat-select [(ngModel)]="time" [disabled]="!availableTimeOptions.length">
+    <mat-option *ngFor="let t of availableTimeOptions" [value]="t">{{ t }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+  <mat-form-field appearance="outline" class="w-full mb-6">
+    <mat-label>Место</mat-label>
+    <input matInput [(ngModel)]="location">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="addBooking()">
+    Забронировать
+  </button>
+</div>

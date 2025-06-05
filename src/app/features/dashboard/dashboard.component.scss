@@ -1,0 +1,31 @@
+.dashboard-container {
+  padding: 16px;
+  text-align: center;  // чтобы всё внутри было центрировано по горизонтали
+}
+
+.avatar-top {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%; /* делает изображение круглым */
+  object-fit: cover;  /* обрезает, чтобы картинка не растягивалась */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.progress-circles {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.circle-progress {
+  width: 140px; /* ширина круга с запасом */
+  height: 140px;
+}
+
+

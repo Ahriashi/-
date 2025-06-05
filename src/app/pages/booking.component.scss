@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  padding: 16px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-datepicker-toggle {
+  margin-left: auto;
+}
+
+button {
+  margin-top: 16px;
+  width: 100%;
+}
+::ng-deep .mat-calendar-body-disabled {
+  color: #ccc !important;
+  pointer-events: none;
+}
